@@ -1,5 +1,5 @@
 ﻿
-## **Analise classe economica clientes - ACLScript**
+## **Análise classe economica clientes - ACLScript**
 
 Esse projeto se propõe a criar uma variável muito importante na segmentação do cliente que é composta por muitas outras, mas iremos focar na criação da classe econômica dos clientes de uma financeira (fictícia).
 
@@ -31,7 +31,7 @@ Essa é uma análise *hands on* para atendimento de uma necessidade pontual, con
 
 ![](https://github.com/Renatoelho/Analise-classe-economica-clientes-ACLScript/blob/master/04-prints/consolidado_contracheques.JPG?raw=true)
 
- >  **Observação:** Está sendo usado PDFs criados com o mesmo *layout*, mas isso deve variar bastante em relação a localização de determinados caracteres quando os arquivos forem criados por sistemas diferentes, nesse caso para evitar problemas é melhor extrair dados de um PDF usando expressões regulares que vai ser um projeto futuro publicado aqui no *GitHub*.
+ >  **Observação:** Está sendo usado PDFs criados com o mesmo *layout*, mas isso deve variar bastante em relação a localização de determinados caracteres quando os arquivos forem criados por sistemas diferentes, nesse caso para evitar problemas é melhor extrair dados de um PDF usando expressões regulares que vai ser um projeto futuro publicado aqui no *Github*.
 
 ----------
 
