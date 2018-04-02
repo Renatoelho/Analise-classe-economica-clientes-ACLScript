@@ -21,7 +21,7 @@ Essa é uma análise *hands on* para atendimento de uma necessidade pontual, con
 
 ### Arquivos originais
 
-![](https://github.com/Renatoelho/Analise-classe-economica-clientes-ACLScript/tree/master/04-prints/contracheque_001.JPG)
+![](https://github.com/Renatoelho/Analise-classe-economica-clientes-ACLScript/blob/master/04-prints/contracheque_001.JPG?raw=true)
 
 > **Observação:** Nessa análise será usada o contracheque de 7 clientes, mas poderiam ser milhares ou até  milhões de contracheques em formato de PDF.
 
