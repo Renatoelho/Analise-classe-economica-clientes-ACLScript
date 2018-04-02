@@ -1,0 +1,29 @@
+COMMENT --- Identifica qual é o contracheque da vez, e segue o fluxo de consolidação ---
+
+OPEN ARQUIVOS
+LOCATE RECORD VAR_CONTROLE
+VAR_NOME_ARQUIVO = ALLTRIM(FILE_NAME)
+
+COMMENT --- Limpa a BASE_TEMP e apaga o arquivo 'consolidado_contracheques.del' para não ocorrer duplicidades de registros ---
+
+IF VAR_CONTROLE = 1 DELETE "BASE_TEMP.fil" OK 
+IF VAR_CONTROLE = 1 DELETE "%VAR_LOCAL_RESULSET%consolidado_contracheques.del" OK 
+
+COMMENT --- Faz a importação dos contracheques um a um ---
+
+IMPORT PDF TO BASE_TEMP "BASE_TEMP.FIL" FROM "%VAR_LOCAL_ARQUIVOS%%VAR_NOME_ARQUIVO%" 0 PARSER "VPDF" RECORD "Detalhe" 0 1 0 TEST 0 3 AT 1;7;10 7 "0001" FIELD "codigo" C AT 1;6 SIZE 6;1 DEC 0 WID 6  PIC "" AS "" FIELD "descricao" C AT 1;19 SIZE 11;1 DEC 0 WID 11  PIC "" AS "" FIELD "referencia" C AT 1;52 SIZE 10;1 DEC 0 WID 10  PIC "" AS "" FIELD "vencimentos" X AT 1;69 SIZE 25;1 DEC 2 WID 25  PIC "" AS "" FIELD "descontos" X AT 1;104 SIZE 24;1 DEC 2 WID 24  PIC "" AS "" RECORD "Cabeçalho1" 1 1 0 TEST 0 0 AT 1;1;0 7 "Cod. Func:" FIELD "cod_funcionario" C AT 1;11 SIZE 11;1 DEC 0 WID 11 FB PIC "" AS "" FIELD "nome_funcionario" C AT 1;24 SIZE 20;1 DEC 0 WID 20 FB PIC "" AS "" FIELD "admissao" D AT 1;57 SIZE 12;1 DEC 0 WID 12 FB PIC "DD/MM/YYYY" AS "" FIELD "cbo" C AT 1;75 SIZE 6;1 DEC 0 WID 6 FB PIC "" AS "" FIELD "funcao" C AT 1;94 SIZE 31;1 DEC 0 WID 31 FB PIC "" AS "" RECORD "Cabeçalho2" 1 1 0 TEST 0 0 AT 1;1;0 7 "nome empresa:" FIELD "empresa" C AT 1;14 SIZE 28;1 DEC 0 WID 28 FB PIC "" AS "" RECORD "Cabeçalho3" 1 1 0 TEST 0 0 AT 1;45;0 7 "Mês Referência:" FIELD "mes_referencia" C AT 1;61 SIZE 28;1 DEC 0 WID 28 FB PIC "" AS "" RECORD "Cabeçalho4" 1 1 0 TEST 0 0 AT 1;1;0 7 "CNPJ:" FIELD "cnpj" C AT 1;10 SIZE 27;1 DEC 0 WID 27 FB PIC "" AS "" 
+
+COMMENT --- Inicia o processo de consolidação dos dados em um arquivo delimitado por ponto e vírgula ';' ---
+
+OPEN BASE_TEMP
+
+COMMENT --- Caso, seja a primeira execução é mantido o cabeçalho original ---
+
+IF VAR_CONTROLE = 1 EXPORT FIELDS VAR_NOME_ARQUIVO AS "origem" codigo descricao referencia vencimentos descontos cod_funcionario nome_funcionario admissao cbo funcao empresa mes_referencia cnpj DELIMITED TO "%VAR_LOCAL_RESULSET%consolidado_contracheques" KEEPTITLE SEPARATOR ";" QUALIFIER NONE APPEND
+IF VAR_CONTROLE <> 1 EXPORT FIELDS VAR_NOME_ARQUIVO AS "origem" codigo descricao referencia vencimentos descontos cod_funcionario nome_funcionario admissao cbo funcao empresa mes_referencia cnpj DELIMITED TO "%VAR_LOCAL_RESULSET%consolidado_contracheques"  SEPARATOR ";" QUALIFIER NONE APPEND
+
+COMMENT --- Ao final de cada execução é incrementado 1 a variável de controle para que o próximo contracheque seja importado ---
+
+VAR_CONTROLE = VAR_CONTROLE + 1
+
+COMMENT --- Fim do script ---

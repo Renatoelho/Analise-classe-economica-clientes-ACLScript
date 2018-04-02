@@ -1,0 +1,62 @@
+SET SAFETY OFF
+
+COMMENT --- Variáveis úteis para execução dos scripts ---
+
+COMMENT --- Aqui é inserido o local onde estão os arquivos Ex.:'C:\user\databases\' ---
+
+VAR_LOCAL_ARQUIVOS = "C:\user\databases\"
+
+COMMENT --- Aqui é onde deve ser salvo o resultado Ex.:'C:\user\resultsets\' ---
+
+VAR_LOCAL_RESULSET = "C:\user\resultsets\"
+
+COMMENT ---  Essa variável é responsável por controlar todo o processo --- 
+
+VAR_CONTROLE = 1
+
+COMMENT --- Lista os arquivos que serão consolidados ---
+
+DIRECTORY "%VAR_LOCAL_ARQUIVOS%*.pdf" TO ARQUIVOS SUPPRESS
+
+COMMENT --- Conta os arquivos ---
+
+OPEN ARQUIVOS
+COUNT 
+
+COMMENT --- Executa o segundo script (script02_analise_classe_economica_clientes) de consolidação uma vez para cada contracheque ---
+
+DO script02_analise_classe_economica_clientes WHILE VAR_CONTROLE <= COUNT1
+
+COMMENT --- Importa a base com todos os contracheques ---
+
+IMPORT DELIMITED TO consolidado_contracheques "consolidado_contracheques.fil" FROM "%VAR_LOCAL_RESULSET%consolidado_contracheques.del" 0 SEPARATOR ";" QUALIFIER NONE CONSECUTIVE STARTLINE 1 KEEPTITLE FIELD "origem" C AT 1 DEC 0 WID 21 PIC "" AS "" FIELD "codigo" C AT 22 DEC 0 WID 5 PIC "" AS "" FIELD "descricao" C AT 27 DEC 0 WID 8 PIC "" AS "" FIELD "referencia" C AT 35 DEC 0 WID 7 PIC "" AS "" FIELD "vencimentos" N AT 42 DEC 2 WID 8 PIC "" AS "" FIELD "descontos" N AT 50 DEC 2 WID 7 PIC "" AS "" FIELD "cod_funcionario" C AT 57 DEC 0 WID 6 PIC "" AS "" FIELD "nome_funcionario" C AT 63 DEC 0 WID 18 PIC "" AS "" FIELD "admissao" C AT 81 DEC 0 WID 8 PIC "" AS "" FIELD "cbo" C AT 89 DEC 0 WID 5 PIC "" AS "" FIELD "funcao" C AT 94 DEC 0 WID 29 PIC "" AS "" FIELD "empresa" C AT 123 DEC 0 WID 22 PIC "" AS "" FIELD "mes_referencia" C AT 145 DEC 0 WID 17 PIC "" AS "" FIELD "cnpj" C AT 162 DEC 0 WID 19 PIC "" AS "" 
+
+COMMENT --- Inicia a definição da classe econômica dos clientes ---
+
+OPEN consolidado_contracheques
+EXTRACT FIELDS empresa nome_funcionario funcao vencimentos AS "salario" IF ALLTRIM(descricao) = "SALÁRIO" TO classe_economica_clientes OPEN
+
+COMMENT --- Cria as classes econômicas --- 
+
+OPEN classe_economica_clientes
+DEFINE FIELD classe COMPUTED 
+
+"Classe E" IF salario <= 1254,00
+"Classe D" IF salario > 1254,00 and salario <= 2004,00
+"Classe C" IF salario > 2004,00 and salario <= 8640,00
+"Classe B" IF salario > 8640,00 and salario <= 11261,00
+"Classe A" IF salario > 11261,00
+"Não definida"
+
+COMMENT --- Apaga todas as bases criadas durante o processamento ---
+
+DELETE FORMAT BASE_TEMP OK
+DELETE FORMAT ARQUIVOS OK
+DELETE FORMAT consolidado_contracheques OK
+DELETE "BASE_TEMP.fil" OK
+DELETE "ARQUIVOS.fil" OK
+DELETE "consolidado_contracheques.fil" OK
+
+COMMENT --- Fim do script ---
+
+SET SAFETY ON 

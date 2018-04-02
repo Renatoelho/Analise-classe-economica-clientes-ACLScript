@@ -1,0 +1,22 @@
+origem;codigo;descricao;referencia;vencimentos;descontos;cod_funcionario;nome_funcionario;admissao;cbo;funcao;empresa;mes_referencia;cnpj
+ contracheque_001.pdf; 0001; SALÁRIO; 30;1499,21;0,00; 16728; Silvia Costa;20130201; 0000; Assistente Jurídico; Advogados e CIA LTDA; dezembro de 2018; 00.000.000/0001-01
+ contracheque_001.pdf; 0108; INSS; 8%;0,00;119,94; 16728; Silvia Costa;20130201; 0000; Assistente Jurídico; Advogados e CIA LTDA; dezembro de 2018; 00.000.000/0001-01
+ contracheque_001.pdf; 0561; IRRF; Isento;0,00;0,00; 16728; Silvia Costa;20130201; 0000; Assistente Jurídico; Advogados e CIA LTDA; dezembro de 2018; 00.000.000/0001-01
+ contracheque_002.pdf; 0001; SALÁRIO; 30;2803,83;0,00; 36781; Pedro Souza;19990301; 0000; Analista de Recursos Humanos; ALLTRIM Materias LTDA; dezembro de 2018; 03.000.001/0001-01
+ contracheque_002.pdf; 0108; INSS; 9%;0,00;252,34; 36781; Pedro Souza;19990301; 0000; Analista de Recursos Humanos; ALLTRIM Materias LTDA; dezembro de 2018; 03.000.001/0001-01
+ contracheque_002.pdf; 0561; IRRF; 7,50%;0,00;48,56; 36781; Pedro Souza;19990301; 0000; Analista de Recursos Humanos; ALLTRIM Materias LTDA; dezembro de 2018; 03.000.001/0001-01
+ contracheque_003.pdf; 0001; SALÁRIO; 30;1045,23;0,00; 75321; Maria do Socorro;20090703; 0000; Auxiliar de Pátio; Mecânica Grilo; dezembro de 2018; 00.023.000/0001-02
+ contracheque_003.pdf; 0108; INSS; 8%;0,00;83,62; 75321; Maria do Socorro;20090703; 0000; Auxiliar de Pátio; Mecânica Grilo; dezembro de 2018; 00.023.000/0001-02
+ contracheque_003.pdf; 0561; IRRF; Isento;0,00;0,00; 75321; Maria do Socorro;20090703; 0000; Auxiliar de Pátio; Mecânica Grilo; dezembro de 2018; 00.023.000/0001-02
+ contracheque_004.pdf; 0001; SALÁRIO; 30;1375,22;0,00; 20012; Simone Nascimento;20120702; 0000; Publicitário; Publi da Gente; dezembro de 2018; 00.400.000/0001-07
+ contracheque_004.pdf; 0108; INSS; 8%;0,00;110,00; 20012; Simone Nascimento;20120702; 0000; Publicitário; Publi da Gente; dezembro de 2018; 00.400.000/0001-07
+ contracheque_004.pdf; 0561; IRRF; Isento;0,00;0,00; 20012; Simone Nascimento;20120702; 0000; Publicitário; Publi da Gente; dezembro de 2018; 00.400.000/0001-07
+ contracheque_005.pdf; 0001; SALÁRIO; 30;1608,99;0,00; 00023; Fernanda Sousa;20051003; 0000; Bombeiro Civil; Condominio Villa Rica; dezembro de 2018; 10.000.990/0001-01
+ contracheque_005.pdf; 0108; INSS; 8%;0,00;128,72; 00023; Fernanda Sousa;20051003; 0000; Bombeiro Civil; Condominio Villa Rica; dezembro de 2018; 10.000.990/0001-01
+ contracheque_005.pdf; 0561; IRRF; Isento;0,00;0,00; 00023; Fernanda Sousa;20051003; 0000; Bombeiro Civil; Condominio Villa Rica; dezembro de 2018; 10.000.990/0001-01
+ contracheque_006.pdf; 0001; SALÁRIO; 30;1617,16;0,00; 20654; Thiago Silva;20151201; 0000; Técnico de Redes; JAJA Tecnologia; dezembro de 2018; 20.000.900/0001-01
+ contracheque_006.pdf; 0108; INSS; 8%;0,00;129,37; 20654; Thiago Silva;20151201; 0000; Técnico de Redes; JAJA Tecnologia; dezembro de 2018; 20.000.900/0001-01
+ contracheque_006.pdf; 0561; IRRF; Isento;0,00;0,00; 20654; Thiago Silva;20151201; 0000; Técnico de Redes; JAJA Tecnologia; dezembro de 2018; 20.000.900/0001-01
+ contracheque_007.pdf; 0001; SALÁRIO; 30;13013,12;0,00; 10324; Maria da Luz;20060401; 0000; Advogado; Advogados e CIA LTDA; dezembro de 2018; 00.000.000/0001-01
+ contracheque_007.pdf; 0108; INSS; teto;0,00;621,04; 10324; Maria da Luz;20060401; 0000; Advogado; Advogados e CIA LTDA; dezembro de 2018; 00.000.000/0001-01
+ contracheque_007.pdf; 0561; IRRF;27,50%;0,00;2538,46; 10324; Maria da Luz;20060401; 0000; Advogado; Advogados e CIA LTDA; dezembro de 2018; 00.000.000/0001-01
